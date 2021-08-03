@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Store.Views.Takhfif">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="WhiteSmoke">
+
+            <Label x:Name="name" HorizontalOptions="Center" FontSize="Large" FontAttributes="Bold" TextColor="Black"></Label>
+            <StackLayout BackgroundColor="DarkGreen">
+                <Button x:Name="btn_add" Text="ثبت تخفیف جدید" BackgroundColor="DarkGray"></Button>
+            </StackLayout>
+            <Grid>
+                <ListView x:Name="InventoryList"
+                  SelectionMode="None"
+                  Margin="100"
+                   >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Frame BorderColor="DarkGray"  CornerRadius="10"  Margin="5,5,5,0">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Label Grid.Column="4"
+                                                       ClassId="{Binding ID}"
+                                                        Text="{Binding startstring}"
+                                                        HorizontalOptions="EndAndExpand"
+                                                           VerticalOptions="CenterAndExpand"
+                                                        VerticalTextAlignment="Center"
+                                                       FontSize="Default" FontAttributes="Bold" TextColor="Black"/>
+                                        <Label Grid.Column="3"
+                                                       ClassId="{Binding ID}"
+                                                        Text="{Binding endstring}"
+                                                        HorizontalOptions="EndAndExpand"
+                                                           VerticalOptions="CenterAndExpand"
+                                                        VerticalTextAlignment="Center"
+                                                       FontSize="Default" FontAttributes="Bold" TextColor="Black"/>
+                                        <Label Grid.Column="2"
+                                                       ClassId="{Binding ID}"
+                                                        Text="{Binding Darsad}"
+                                                        HorizontalOptions="EndAndExpand"
+                                                           VerticalOptions="CenterAndExpand"
+                                                        VerticalTextAlignment="Start"
+                                                       FontSize="Default" TextColor="Black"/>
+                                        <Label Grid.Column="1"
+                                                       ClassId="{Binding ID}"
+                                                        Text="{Binding Active}"
+                                                        HorizontalOptions="EndAndExpand"
+                                                           VerticalOptions="CenterAndExpand"
+                                                        VerticalTextAlignment="Start"
+                                                       FontSize="Default" TextColor="DarkRed"/>
+                                        <StackLayout BackgroundColor="DarkRed" Grid.Column="0" IsVisible="{Binding ActiveBool}">
+                                            <Button Clicked="btn_del" Text="حذف" BackgroundColor="DarkGray"></Button>
+                                        </StackLayout>
+                                    </Grid>
+                                </Frame>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

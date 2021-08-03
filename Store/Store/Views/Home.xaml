@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Store.Views.Home">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="WhiteSmoke">
+            <Grid HorizontalOptions="CenterAndExpand" Margin="50,100,50,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <StackLayout BackgroundColor="DarkRed" Grid.Column="0">
+                    <Button x:Name="btn_em" Text="کارمندان" BackgroundColor="DarkGray"></Button>
+                </StackLayout>
+                <StackLayout BackgroundColor="DarkOrange" Grid.Column="1">
+                    <Button x:Name="btn_or" Text="خریدها" BackgroundColor="DarkGray"></Button>
+                </StackLayout>
+                <StackLayout BackgroundColor="DarkKhaki" Grid.Column="2">
+                    <Button x:Name="btn_pr" Text="کالاها" BackgroundColor="DarkGray"></Button>
+                </StackLayout>
+                <StackLayout BackgroundColor="DarkSalmon" Grid.Column="3">
+                    <Button x:Name="btn_cat" Text="دسته بندی ها" BackgroundColor="DarkGray"></Button>
+                </StackLayout>
+            </Grid>
+            <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                <Label TextColor="Black" FontSize="Large" FontAttributes="Bold" >خوش آمدید</Label>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

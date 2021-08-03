@@ -1,0 +1,181 @@
+
+CREATE TABLE [dbo].[Category](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[Title] [nvarchar](max) NOT NULL,
+ CONSTRAINT [PK_Category] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Employee]    Script Date: 6/7/2021 7:56:05 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Employee](
+	[ID] [nvarchar](20) NOT NULL,
+	[Name] [nvarchar](max) NOT NULL,
+	[Lastname] [nvarchar](max) NOT NULL,
+	[Number] [nvarchar](max) NOT NULL,
+	[BimeNumber] [nvarchar](max) NOT NULL,
+	[Address] [nvarchar](max) NOT NULL,
+ CONSTRAINT [PK_Employee] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Order]    Script Date: 6/7/2021 7:56:05 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Order](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[Total] [int] NOT NULL,
+	[TotalWithoutTakhfif] [int] NOT NULL,
+	[PhoneNumber] [nvarchar](max) NOT NULL,
+	[IsComplete] [bit] NOT NULL,
+	[IsCansel] [bit] NOT NULL,
+ CONSTRAINT [PK_Order] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[OrderItem]    Script Date: 6/7/2021 7:56:05 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[OrderItem](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[OrderID] [int] NOT NULL,
+	[ProductID] [int] NOT NULL,
+	[Count] [int] NOT NULL,
+	[Total] [int] NOT NULL,
+ CONSTRAINT [PK_OrderItem] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Payment]    Script Date: 6/7/2021 7:56:05 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Payment](
+	[ID] [nvarchar](20) NOT NULL,
+	[StartTime] [datetime2](7) NOT NULL,
+	[EndTime] [datetime2](7) NOT NULL,
+	[Price] [nvarchar](max) NOT NULL,
+	[EmployeeID] [nvarchar](20) NOT NULL,
+ CONSTRAINT [PK_Payment] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Product]    Script Date: 6/7/2021 7:56:05 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Product](
+	[ID] [int] NOT NULL,
+	[Name] [nvarchar](max) NOT NULL,
+	[Count] [int] NOT NULL,
+	[Company] [nvarchar](max) NOT NULL,
+	[Price] [int] NOT NULL,
+	[CategoryID] [int] NOT NULL,
+ CONSTRAINT [PK_Product] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Takhfif]    Script Date: 6/7/2021 7:56:05 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Takhfif](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[StartTime] [datetime2](7) NOT NULL,
+	[EndTime] [datetime2](7) NOT NULL,
+	[Darsad] [int] NOT NULL,
+	[ProductID] [int] NOT NULL,
+ CONSTRAINT [PK_Takhfif] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[Category] ON 
+GO
+INSERT [dbo].[Category] ([ID], [Title]) VALUES (4, N'پنیر')
+GO
+INSERT [dbo].[Category] ([ID], [Title]) VALUES (5, N'چیپس')
+GO
+INSERT [dbo].[Category] ([ID], [Title]) VALUES (7, N'پفک')
+GO
+INSERT [dbo].[Category] ([ID], [Title]) VALUES (8, N'دستمال')
+GO
+SET IDENTITY_INSERT [dbo].[Category] OFF
+GO
+INSERT [dbo].[Employee] ([ID], [Name], [Lastname], [Number], [BimeNumber], [Address]) VALUES (N'2170360069', N'عباس', N'نوروزی', N'09347584410', N'587741598', N'بهشهر-پیشوا')
+GO
+SET IDENTITY_INSERT [dbo].[Order] ON 
+GO
+INSERT [dbo].[Order] ([ID], [Total], [TotalWithoutTakhfif], [PhoneNumber], [IsComplete], [IsCansel]) VALUES (5, 200000, 250000, N'09389380465', 1, 0)
+GO
+SET IDENTITY_INSERT [dbo].[Order] OFF
+GO
+SET IDENTITY_INSERT [dbo].[OrderItem] ON 
+GO
+INSERT [dbo].[OrderItem] ([ID], [OrderID], [ProductID], [Count], [Total]) VALUES (5, 5, 18, 50, 200000)
+GO
+SET IDENTITY_INSERT [dbo].[OrderItem] OFF
+GO
+INSERT [dbo].[Payment] ([ID], [StartTime], [EndTime], [Price], [EmployeeID]) VALUES (N'1258744', CAST(N'2021-03-22T00:00:00.0000000' AS DateTime2), CAST(N'2021-04-22T00:00:00.0000000' AS DateTime2), N'200000', N'2170360069')
+GO
+INSERT [dbo].[Product] ([ID], [Name], [Count], [Company], [Price], [CategoryID]) VALUES (18, N'چیپس فلفلی', 210, N'چی توز', 5000, 5)
+GO
+SET IDENTITY_INSERT [dbo].[Takhfif] ON 
+GO
+INSERT [dbo].[Takhfif] ([ID], [StartTime], [EndTime], [Darsad], [ProductID]) VALUES (2, CAST(N'2021-03-30T00:00:00.0000000' AS DateTime2), CAST(N'2021-03-31T00:00:00.0000000' AS DateTime2), 20, 18)
+GO
+INSERT [dbo].[Takhfif] ([ID], [StartTime], [EndTime], [Darsad], [ProductID]) VALUES (3, CAST(N'2021-03-31T00:00:00.0000000' AS DateTime2), CAST(N'2021-04-01T00:00:00.0000000' AS DateTime2), 20, 18)
+GO
+SET IDENTITY_INSERT [dbo].[Takhfif] OFF
+GO
+ALTER TABLE [dbo].[OrderItem]  WITH CHECK ADD  CONSTRAINT [FK_OrderItem_Order] FOREIGN KEY([OrderID])
+REFERENCES [dbo].[Order] ([ID])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[OrderItem] CHECK CONSTRAINT [FK_OrderItem_Order]
+GO
+ALTER TABLE [dbo].[OrderItem]  WITH CHECK ADD  CONSTRAINT [FK_OrderItem_Product] FOREIGN KEY([ProductID])
+REFERENCES [dbo].[Product] ([ID])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[OrderItem] CHECK CONSTRAINT [FK_OrderItem_Product]
+GO
+ALTER TABLE [dbo].[Product]  WITH CHECK ADD  CONSTRAINT [FK_Product_Category] FOREIGN KEY([CategoryID])
+REFERENCES [dbo].[Category] ([ID])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[Product] CHECK CONSTRAINT [FK_Product_Category]
+GO
+ALTER TABLE [dbo].[Takhfif]  WITH CHECK ADD  CONSTRAINT [FK_Takhfif_Product] FOREIGN KEY([ProductID])
+REFERENCES [dbo].[Product] ([ID])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[Takhfif] CHECK CONSTRAINT [FK_Takhfif_Product]
+GO
+USE [master]
+GO
+ALTER DATABASE [Store] SET  READ_WRITE 
+GO

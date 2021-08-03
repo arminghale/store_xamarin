@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Store.Views.Order">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="WhiteSmoke">
+
+            <Grid HorizontalOptions="CenterAndExpand" Margin="50,100,50,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <StackLayout BackgroundColor="DarkRed" Grid.Column="0" Grid.Row="0">
+                    <Button x:Name="btn_em" Text="کارمندان" BackgroundColor="DarkGray"></Button>
+                </StackLayout>
+                <StackLayout BackgroundColor="DarkOrange" Grid.Column="1" Grid.Row="0">
+                    <Button x:Name="btn_or" Text="خریدها" BackgroundColor="Black"></Button>
+                </StackLayout>
+                <StackLayout BackgroundColor="DarkKhaki" Grid.Column="2" Grid.Row="0">
+                    <Button x:Name="btn_pr" Text="کالاها" BackgroundColor="DarkGray"></Button>
+                </StackLayout>
+                <StackLayout BackgroundColor="DarkSalmon" Grid.Column="3" Grid.Row="0">
+                    <Button x:Name="btn_cat" Text="دسته بندی ها" BackgroundColor="DarkGray"></Button>
+                </StackLayout>
+                <StackLayout BackgroundColor="DarkGreen" Grid.Column="1" Grid.Row="1">
+                    <Button x:Name="btn_add" Text="افزودن خرید جدید" BackgroundColor="DarkGray"></Button>
+                </StackLayout>
+            </Grid>
+            <Grid Margin="250,5,250,5" VerticalOptions="CenterAndExpand" HeightRequest="120">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Entry Grid.Column="1" x:Name="search"  Placeholder="جستجو" VerticalOptions="CenterAndExpand" BackgroundColor="DarkGray"></Entry>
+                <StackLayout Grid.Column="0" BackgroundColor="Black" VerticalOptions="CenterAndExpand">
+                    <Button x:Name="btn_search"  Text="جستجو" BackgroundColor="DarkGray"></Button>
+                </StackLayout>
+            </Grid>
+
+            <Grid>
+                <ListView x:Name="InventoryList"
+                  SelectionMode="None"
+                  Margin="100,10,100,10"
+                   >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Frame BorderColor="DarkGray"  CornerRadius="10"  Margin="5,5,5,0">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto" />
+                                            <ColumnDefinition Width="auto" />
+                                            <ColumnDefinition Width="auto" />
+                                            <ColumnDefinition Width="auto" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Label Grid.Column="8"
+                                                       ClassId="{Binding ID}"
+                                                        Text="{Binding ID}"
+                                                        HorizontalOptions="EndAndExpand"
+                                                           VerticalOptions="CenterAndExpand"
+                                                        VerticalTextAlignment="Center"
+                                                       FontSize="Default" TextColor="Black"/>
+                                        <Label Grid.Column="7"
+                                                       ClassId="{Binding ID}"
+                                                        Text="{Binding TotalString}"
+                                                        HorizontalOptions="CenterAndExpand"
+                                                           VerticalOptions="CenterAndExpand"
+                                                        VerticalTextAlignment="Center"
+                                                       FontSize="Default" FontAttributes="Bold" TextColor="Black"/>
+                                        <Label Grid.Column="6"
+                                                       ClassId="{Binding ID}"
+                                                        Text="{Binding TotalWithoutTakhfifString}"
+                                                        HorizontalOptions="EndAndExpand"
+                                                           VerticalOptions="CenterAndExpand"
+                                                        VerticalTextAlignment="Center"
+                                                       FontSize="Default" FontAttributes="Bold" TextColor="Black"/>
+                                        <Label Grid.Column="5"
+                                                       ClassId="{Binding ID}"
+                                                        Text="{Binding Vaziat}"
+                                                        HorizontalOptions="EndAndExpand"
+                                                           VerticalOptions="CenterAndExpand"
+                                                        VerticalTextAlignment="Start"
+                                                       FontSize="Default" TextColor="Black"/>
+                                        <Label Grid.Column="4"
+                                                       ClassId="{Binding ID}"
+                                                        Text="{Binding PhoneNumber}"
+                                                        HorizontalOptions="EndAndExpand"
+                                                           VerticalOptions="CenterAndExpand"
+                                                        VerticalTextAlignment="Start"
+                                                       FontSize="Default" TextColor="Black"/>
+                                        <StackLayout BackgroundColor="DodgerBlue" Grid.Column="3" >
+                                            <Button Clicked="btn_faktor" Text="فاکتور" BackgroundColor="DarkGray"></Button>
+                                        </StackLayout>
+                                        <StackLayout x:Name="pardakht" BackgroundColor="Orange" Grid.Column="2" IsVisible="{Binding Complete}">
+                                            <Button Clicked="btn_pay" Text="پرداخت" BackgroundColor="DarkGray"></Button>
+                                        </StackLayout>
+                                        <StackLayout x:Name="cansel" BackgroundColor="DarkRed" Grid.Column="1" IsVisible="{Binding Cansel}">
+                                            <Button Clicked="btn_cansel" Text="کنسل" BackgroundColor="DarkGray"></Button>
+                                        </StackLayout>
+                                        <StackLayout BackgroundColor="DarkRed" Grid.Column="0">
+                                            <Button Clicked="btn_del" Text="حذف" BackgroundColor="DarkGray"></Button>
+                                        </StackLayout>
+                                    </Grid>
+                                </Frame>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

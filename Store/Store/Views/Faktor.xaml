@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Store.Views.Faktor">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="WhiteSmoke">
+            <ScrollView>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Frame Grid.Row="0" BorderColor="DarkGray"  CornerRadius="10">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"></RowDefinition>
+                                <RowDefinition Height="auto"></RowDefinition>
+                                <RowDefinition Height="auto"></RowDefinition>
+                                <RowDefinition Height="auto"></RowDefinition>
+                                <RowDefinition Height="auto"></RowDefinition>
+                                <RowDefinition Height="auto"></RowDefinition>
+                                <RowDefinition Height="auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Label Grid.Row="0" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" TextColor="Black" FontAttributes="Bold" Text="شماره همراه"></Label>
+                            <Label Grid.Row="1" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" TextColor="Black" x:Name="Phone"></Label>
+                            <Label Grid.Row="2" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" TextColor="Black" FontAttributes="Bold" Text="وضعیت"></Label>
+                            <Label Grid.Row="3" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" TextColor="Black" x:Name="Vaziat"></Label>
+                            <Label Grid.Row="4" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" TextColor="Black" FontAttributes="Bold" Text="مبلغ"></Label>
+                            <Label Grid.Row="5" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" TextColor="Black" x:Name="Total"></Label>
+                            <Label Grid.Row="6" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" FontAttributes="Bold" TextColor="Black" x:Name="Total2"></Label>
+                        </Grid>
+                    </Frame>
+                    <StackLayout Grid.Row="1" HeightRequest="500">
+                        <Label Grid.Row="1" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" FontSize="Large" TextColor="Black" Text="کالا ها"></Label>
+                        <ListView x:Name="InventoryList2"
+                  SelectionMode="None"
+                  Margin="100,20,100,20"
+                   >
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Frame BorderColor="DarkGray"  CornerRadius="10"  Margin="5,5,5,0">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="*" />
+                                                </Grid.ColumnDefinitions>
+                                                <Label Grid.Column="4"
+                                                       ClassId="{Binding ID}"
+                                                        Text="{Binding ProductID}"
+                                                        HorizontalOptions="EndAndExpand"
+                                                           VerticalOptions="CenterAndExpand"
+                                                        VerticalTextAlignment="Center"
+                                                       FontSize="Default" TextColor="Black"/>
+                                                <Label Grid.Column="3"
+                                                       ClassId="{Binding ID}"
+                                                        Text="{Binding ProductName}"
+                                                        HorizontalOptions="EndAndExpand"
+                                                           VerticalOptions="CenterAndExpand"
+                                                        VerticalTextAlignment="Center"
+                                                       FontSize="Default" TextColor="Black"/>
+                                                <Label Grid.Column="2"
+                                                       ClassId="{Binding ID}"
+                                                        Text="{Binding Count}"
+                                                        HorizontalOptions="EndAndExpand"
+                                                           VerticalOptions="CenterAndExpand"
+                                                        VerticalTextAlignment="Center"
+                                                       FontSize="Default" FontAttributes="Bold" TextColor="Black"/>
+                                                <Label Grid.Column="1"
+                                                       ClassId="{Binding ID}"
+                                                        Text="{Binding TotalString}"
+                                                        HorizontalOptions="EndAndExpand"
+                                                           VerticalOptions="CenterAndExpand"
+                                                        VerticalTextAlignment="Center"
+                                                       FontSize="Default" FontAttributes="Bold" TextColor="Black"/>
+                                            </Grid>
+                                        </Frame>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackLayout>
+                </Grid>
+            </ScrollView>
+            
+            
+
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
